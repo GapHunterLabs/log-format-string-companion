@@ -1,0 +1,59 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <id>dev.gaphunter.logformatstringcompanion</id>
+    <name>Log Format String Companion</name>
+    <vendor>Gap Hunter Labs</vendor>
+    <description><![CDATA[
+        <p>Flags a <b>log message whose placeholder count doesn't match
+        its argument count</b> -- a common bug that today only surfaces
+        at runtime: a leftover placeholder stays literal in the log
+        output, or an extra argument is silently dropped.</p>
+        <p><b>What triggers it</b>:</p>
+        <ul>
+            <li><b>SLF4J-style, Java/Kotlin</b> --
+            <code>log.info("User {} logged in from {}", userId, ipAddress)</code>:
+            counts <code>{}</code> occurrences in the message literal and
+            compares against the trailing arguments.</li>
+            <li><b>Python <code>%</code>-style logging</b> --
+            <code>logger.info("User %s logged in", user_id)</code>:
+            counts <code>%s</code>/<code>%d</code>/etc. specifiers and
+            compares the same way.</li>
+        </ul>
+        <p><b>The SLF4J trailing-exception case, handled correctly</b>:
+        SLF4J treats a last argument as the exception to log (not a
+        placeholder argument) when the call has exactly one more
+        argument than placeholders -- the conventional shape
+        <code>log.error("Failed for {}", userId, exception)</code> (1
+        placeholder, 2 arguments) is <b>correct</b>, never flagged.</p>
+        <p><b>What does NOT trigger it</b> (tuned hard against false
+        positives, see README for the full list): a message with no
+        placeholders and no extra arguments, an exact placeholder/
+        argument match, the conventional trailing-exception shape above,
+        and any case where the last argument's type can't be determined
+        with certainty -- conservative by design, a missed real mismatch
+        beats a false alarm.</p>
+        <p><b>v0.1 scope, honest about what's out</b>: SLF4J-style
+        Java/Kotlin and Python <code>%</code>-style logging only.
+        Python f-strings are deliberately NOT scanned -- their
+        interpolations are inline expressions, not separate arguments,
+        so there's no placeholder-count-vs-argument-count mismatch to
+        detect in the same shape (see README). Log4j2/structlog/Kotlin
+        logging framework support and placeholder-type-mismatch
+        detection are future work, not silently pretended to be
+        handled.</p>
+        <p>Deliberately narrow: one specific pattern, near-zero
+        configuration, tuned hard against false positives.</p>
+        <p>Free. No license nags, no telemetry, no popups.</p>
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <localInspection language=""
+            groupName="Log Format String Companion"
+            displayName="Log message placeholder count does not match argument count"
+            enabledByDefault="true"
+            level="WARNING"
+            implementationClass="dev.gaphunter.logformatstringcompanion.inspection.LogFormatStringInspection"/>
+    </extensions>
+</idea-plugin>
