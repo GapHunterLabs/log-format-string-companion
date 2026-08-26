@@ -9,6 +9,7 @@ import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
 import dev.gaphunter.logformatstringcompanion.detect.LogFormatMismatchKind
 import dev.gaphunter.logformatstringcompanion.detect.LogFormatScanner
+import dev.gaphunter.logformatstringcompanion.review.ReviewPrompt
 
 /**
  * Flags a log message whose placeholder count doesn't match its
@@ -67,6 +68,12 @@ class LogFormatStringInspection : LocalInspectionTool() {
                 ProblemHighlightType.GENERIC_ERROR_OR_WARNING,
                 isOnTheFly,
             )
+
+            val path = file.virtualFile?.path
+            if (path != null) {
+                val lineNumber = file.viewProvider.document?.getLineNumber(match.startOffset) ?: -1
+                ReviewPrompt.recordHit(file.project, "$path:$lineNumber")
+            }
         }
 
         return if (problems.isEmpty()) null else problems.toTypedArray()

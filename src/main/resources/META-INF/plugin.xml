@@ -55,5 +55,6 @@
             enabledByDefault="true"
             level="WARNING"
             implementationClass="dev.gaphunter.logformatstringcompanion.inspection.LogFormatStringInspection"/>
+        <notificationGroup id="Log Format String Companion" displayType="BALLOON"/>
     </extensions>
 </idea-plugin>
