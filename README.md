@@ -11,7 +11,7 @@ pattern, near-zero configuration, tuned hard against false positives.
 ## Why it exists
 
 An original idea, not a port of an existing competitor — validated
-against `CONSTITUTION.md` §1's "Plan B permanente" discipline before
+against this catalog's own idea-validation discipline before
 being built: (1) confirmed no plugin in this catalog does exactly this,
 and a search for "log format" only surfaces MyBatis output formatters —
 an unrelated tool, not a placeholder/argument mismatch inspector; (2)
@@ -174,8 +174,7 @@ v0.1.
 
 Free, all of it — no paywall, nothing held back for a future tier, and
 **no market anchor** (no confirmed paying competitor with real
-complaints in this exact niche — see `CONSTITUTION.md` §1 "Plan B
-permanente"). Treated with the same discipline as every other
+complaints in this exact niche). Treated with the same discipline as every other
 originally-generated idea in this catalog: no disproportionate time or
 marketing investment before real adoption signal.
 
@@ -201,9 +200,9 @@ promised):
   inspection apply without a `language` filter in `plugin.xml`.
 - **Leaf PSI anchoring for each `ProblemDescriptor`.** A
   `ProblemDescriptor` anchored on a composite PSI node instead of a
-  real leaf token is a documented platform gotcha (`SDK_GOTCHAS.md`
-  §20) — this inspection always walks down to a true leaf element
-  before creating a descriptor.
+  real leaf token is a documented platform gotcha — this inspection
+  always walks down to a true leaf element before creating a
+  descriptor.
 - **One shared call-matching regex for both placeholder conventions**,
   deciding SLF4J-vs-Python style from the message literal's own content
   (which marker it actually contains) rather than from the file

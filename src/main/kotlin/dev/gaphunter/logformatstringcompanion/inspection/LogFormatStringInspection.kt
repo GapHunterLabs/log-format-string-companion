@@ -81,9 +81,9 @@ class LogFormatStringInspection : LocalInspectionTool() {
 
     /**
      * Resolves a leaf PSI element covering [startOffset] -- never a
-     * composite node (`SDK_GOTCHAS.md` section 20: a `LineMarkerInfo`/
-     * problem anchor on a composite node causes real platform issues).
-     * Walks down to `firstChild` until a true leaf is reached.
+     * composite node (a `LineMarkerInfo`/problem anchor on a composite
+     * node causes real platform issues). Walks down to `firstChild`
+     * until a true leaf is reached.
      */
     private fun leafElementAt(file: PsiFile, startOffset: Int): PsiElement? {
         if (startOffset < 0 || startOffset >= file.textLength) return null
