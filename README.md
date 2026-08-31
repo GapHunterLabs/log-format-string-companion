@@ -162,6 +162,10 @@ v0.1.
 - **The trailing-`Throwable` exemption is syntax-only, not real type
   resolution** (see above) — deliberately conservative, a missed real
   bug is accepted over a false positive on the common correct case.
+  Recognizes string/char/boolean/numeric literals, including a
+  Java/Kotlin type suffix (`42L`, `1.5f`, `3.0d`, `100u`) — an
+  identifier, method call, or constructor expression is still left
+  alone.
 - **Receiver name matching is exact (`log`/`logger`), not substring.**
   A logger stored in a differently-named variable (e.g. `LOG`, `logr`)
   is matched case-insensitively for the exact names `log`/`logger`

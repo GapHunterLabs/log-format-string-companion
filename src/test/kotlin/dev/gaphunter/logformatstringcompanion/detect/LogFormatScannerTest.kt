@@ -84,6 +84,22 @@ class LogFormatScannerTest {
     }
 
     @Test
+    fun `slf4j trailing long-suffixed numeric literal argument with one excess IS flagged, not a Throwable shape`() {
+        val text = """log.error("Failed for {}", userId, 42L);"""
+        val matches = LogFormatScanner.scan(text)
+        assertEquals(1, matches.size)
+        assertEquals(LogFormatMismatchKind.TOO_FEW_PLACEHOLDERS, matches.single().mismatchKind)
+    }
+
+    @Test
+    fun `slf4j trailing float-suffixed numeric literal argument with one excess IS flagged, not a Throwable shape`() {
+        val text = """log.error("Failed for {}", userId, 1.5f);"""
+        val matches = LogFormatScanner.scan(text)
+        assertEquals(1, matches.size)
+        assertEquals(LogFormatMismatchKind.TOO_FEW_PLACEHOLDERS, matches.single().mismatchKind)
+    }
+
+    @Test
     fun `slf4j excess of two arguments beyond placeholders still triggers even with a trailing exception-like name`() {
         val text = """log.error("Failed for {}", userId, extraArg, exception);"""
         val matches = LogFormatScanner.scan(text)

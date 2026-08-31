@@ -213,7 +213,17 @@ object LogFormatScanner {
         if (trimmed.isEmpty()) return false
         if (trimmed.startsWith("\"") || trimmed.startsWith("'")) return true
         if (trimmed == "true" || trimmed == "false" || trimmed == "null") return true
-        return trimmed.toDoubleOrNull() != null
+        if (trimmed.toDoubleOrNull() != null) return true
+        // A Java/Kotlin numeric literal with a type suffix (42L, 1.5f,
+        // 3.0d, 100u, 100uL) -- toDoubleOrNull() alone doesn't strip
+        // these, so a suffixed literal would otherwise slip through as
+        // "can't tell". Safe to strip blindly: a real identifier can
+        // never end in a digit-then-suffix-letter shape, since
+        // identifiers can't start with a digit -- only an actual numeric
+        // literal token has digits immediately before the suffix.
+        val withoutSuffix = trimmed.dropLastWhile { it in "LlFfDdUu" }
+        if (withoutSuffix.isNotEmpty() && withoutSuffix != trimmed && withoutSuffix.toDoubleOrNull() != null) return true
+        return false
     }
 
     /**
