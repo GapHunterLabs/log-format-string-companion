@@ -35,6 +35,7 @@ object LogSignalNames {
         "debug",
         "info",
         "warn",
+        "warning",
         "error",
     )
 

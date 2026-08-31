@@ -4,6 +4,16 @@
 
 ## [Unreleased]
 
+## [0.2.0]
+
+### Fixed
+
+- The trailing-argument "definitely not a Throwable" check now
+  recognizes numeric literals with a Java/Kotlin type suffix (`42L`,
+  `1.5f`, `3.0d`, `100u`) -- previously only unsuffixed numbers were
+  recognized, so `log.error("Failed for {}", userId, 42L)` was silently
+  treated as "can't tell" instead of being flagged.
+
 ## [0.1.1]
 
 ### Added
@@ -45,6 +55,7 @@
 - 100% static text analysis of files already open in the project -- no
   network call, no external process spawned.
 
-[Unreleased]: https://github.com/GapHunterLabs/log-format-string-companion/compare/0.1.1...HEAD
+[Unreleased]: https://github.com/GapHunterLabs/log-format-string-companion/compare/0.2.0...HEAD
+[0.2.0]: https://github.com/GapHunterLabs/log-format-string-companion/compare/0.1.1...0.2.0
 [0.1.1]: https://github.com/GapHunterLabs/log-format-string-companion/compare/0.1.0...0.1.1
 [0.1.0]: https://github.com/GapHunterLabs/log-format-string-companion/commits/0.1.0
