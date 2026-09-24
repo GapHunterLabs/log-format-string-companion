@@ -32,7 +32,7 @@
         and any case where the last argument's type can't be determined
         with certainty -- conservative by design, a missed real mismatch
         beats a false alarm.</p>
-        <p><b>v0.1 scope, honest about what's out</b>: SLF4J-style
+        <p><b>Scope, honest about what's out</b>: SLF4J-style
         Java/Kotlin and Python <code>%</code>-style logging only.
         Python f-strings are deliberately NOT scanned -- their
         interpolations are inline expressions, not separate arguments,
