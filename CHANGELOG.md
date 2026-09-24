@@ -4,6 +4,17 @@
 
 ## [Unreleased]
 
+## [0.2.1]
+
+### Fixed
+
+- Marketplace listing and README still labeled the documented scope
+  gaps (Log4j2/structlog/Kotlin logging support, placeholder-type-
+  mismatch detection) as "v0.1 scope" / "deferred to v0.2 Pro" --
+  stale since 0.2.0 shipped as a free precision fix, not the described
+  tier. The gaps themselves are still real and still free/unstarted;
+  only the stale version framing is corrected.
+
 ## [0.2.0]
 
 ### Fixed
@@ -55,7 +66,8 @@
 - 100% static text analysis of files already open in the project -- no
   network call, no external process spawned.
 
-[Unreleased]: https://github.com/GapHunterLabs/log-format-string-companion/compare/0.2.0...HEAD
+[Unreleased]: https://github.com/GapHunterLabs/log-format-string-companion/compare/0.2.1...HEAD
+[0.2.1]: https://github.com/GapHunterLabs/log-format-string-companion/compare/0.2.0...0.2.1
 [0.2.0]: https://github.com/GapHunterLabs/log-format-string-companion/compare/0.1.1...0.2.0
 [0.1.1]: https://github.com/GapHunterLabs/log-format-string-companion/compare/0.1.0...0.1.1
 [0.1.0]: https://github.com/GapHunterLabs/log-format-string-companion/commits/0.1.0

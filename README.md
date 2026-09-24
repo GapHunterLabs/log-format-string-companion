@@ -174,16 +174,17 @@ v0.1.
   check, since common unrelated identifiers (`catalog`, `dialog`)
   contain "log" as a substring.
 
-## v0.1 scope
+## Scope
 
 Free, all of it — no paywall, nothing held back for a future tier, and
 **no market anchor** (no confirmed paying competitor with real
 complaints in this exact niche). Treated with the same discipline as every other
 originally-generated idea in this catalog: no disproportionate time or
-marketing investment before real adoption signal.
+marketing investment before real adoption signal. (0.2.0 was a free
+precision fix to the existing trailing-argument check, not a scope
+expansion — the gaps below are still real.)
 
-Deferred to a possible future v0.2 Pro tier (not started, not
-promised):
+Deferred, not started, not promised:
 - Support for more logging frameworks/conventions — Log4j2, structlog,
   Kotlin logging (`KotlinLogging`/`mu.KLogger`).
 - Detection of placeholder *type* mismatches (not just count) — e.g. a
