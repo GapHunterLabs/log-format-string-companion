@@ -1,12 +1,20 @@
 # Log Format String Companion
 
 IntelliJ-family plugin. Flags a **log message whose placeholder count
-doesn't match its argument count** — an error that today only surfaces
-at runtime: a leftover placeholder stays literal in the log output, or
+doesn't match its argument count** — an error the compiler doesn't
+catch: a leftover placeholder stays literal in the log output, or
 an extra argument is silently dropped, or (worst case) SLF4J
 misinterprets the last argument as an exception when it isn't one.
 Deliberately narrow (not a full SAST scanner like Qodana): one specific
 pattern, near-zero configuration, tuned hard against false positives.
+(IntelliJ IDEA has its own check for SLF4J calls in Java files; this
+plugin also covers Python `%`-style logging.)
+
+![Log Format String Companion: catch log calls whose placeholders and arguments don't match](docs/media/hero.gif)
+
+Each feature on its own:
+[Python logging](docs/media/01-python.gif) ·
+[Kotlin](docs/media/02-kotlin.gif)
 
 ## Why it exists
 
