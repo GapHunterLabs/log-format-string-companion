@@ -1,0 +1,10 @@
+<html>
+<body>
+Reports a log call whose message placeholders do not match the number of arguments: SLF4J-style
+<code>{}</code> in Java and Kotlin (<code>log.info("User {} logged in from {}", userId, ip)</code>), and
+<code>%</code>-style specifiers (<code>%s</code>, <code>%d</code>, ...) in Python logging.
+<!-- tooltip end -->
+<p>The mismatch only shows at runtime: a leftover placeholder is printed literally, or an extra argument is silently
+dropped. A trailing exception argument in SLF4J is not counted as a placeholder argument.</p>
+</body>
+</html>
