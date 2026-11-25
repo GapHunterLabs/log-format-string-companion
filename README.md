@@ -18,19 +18,7 @@ Each feature on its own:
 
 ## Why it exists
 
-An original idea, not a port of an existing competitor — validated
-against this catalog's own idea-validation discipline before
-being built: (1) confirmed no plugin in this catalog does exactly this,
-and a search for "log format" only surfaces MyBatis output formatters —
-an unrelated tool, not a placeholder/argument mismatch inspector; (2)
-confirmed buildable in the ~10-day budget with techniques this catalog
-already has proven — `LocalInspectionTool.checkFile` doing a whole-
-document regex scan, the exact mechanism `sql-concatenation-companion`
-already proved in this catalog (reused directly, not reinvented). Same
-"apuesta consciente sin ancla de mercado" treatment as every other
-originally-generated idea in this catalog: v0.1 ships free, no
-time/marketing investment disproportionate to real demand signal until
-there's evidence of adoption.
+An original idea, not a port of an existing competitor. Before building it I confirmed that no other plugin does exactly this: a search for "log format" only surfaces MyBatis output formatters, an unrelated tool, not an inspector of placeholder and argument mismatches. The check is a whole-document regex scan inside a `LocalInspectionTool`, the same mechanism `sql-concatenation-companion` already uses. It is free.
 
 ## Detection heuristic (the actual anti-false-positive design)
 
